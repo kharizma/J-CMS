@@ -3,14 +3,16 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
+app.engine('hbs', exphbs({
+  defaultLayout: 'main',
+  extname: 'hbs'
 }));
 
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 
+app.use(express.static('src/static'));
 app.set('views', path.join(__dirname,'views'));
 
 app.get('/', (req,res) => {
