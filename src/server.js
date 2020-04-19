@@ -6,7 +6,7 @@ const app = express();
 const port = 4000;
 
 app.engine('hbs', exphbs({
-  defaultLayout: 'main',
+  defaultLayout: 'empty',
   extname: 'hbs'
 }));
 
@@ -16,7 +16,7 @@ app.use(express.static('src/static'));
 app.set('views', path.join(__dirname,'views'));
 
 app.get('/', (req,res) => {
-  res.render('home');
+  res.render('login');
 });
 
 app.listen(port, () => {
