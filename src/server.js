@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const path = require('path')
+const router = require('./routes/routes_auth')
 
 const app = express();
 const port = 4000;
@@ -15,9 +16,7 @@ app.set('view engine', 'hbs');
 app.use(express.static('src/static'));
 app.set('views', path.join(__dirname,'views'));
 
-app.get('/', (req,res) => {
-  res.render('login');
-});
+app.use('/', router);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
